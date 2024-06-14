@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center mt-4">
+        <div class="col-7 px-5 py-4" id="divCard">
+            <h2>Edit Profile</h2>
+            <form [formGroup]="userForm" class="mt-2" (ngSubmit)="editUser()">
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" formControlName="fullName">
+                    <small class=" text-danger" *ngIf="userForm.controls['fullName'].dirty && userForm.hasError('required','fullName')">*Full Name Is Required</small>
+                </div>
+
+                <div class="row">
+                    <fieldset disabled class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" formControlName="email">
+                            <div id="emailHelp" class="form-text">Email address can't be changed.</div>
+                        </div>
+                    </fieldset>
+                    <div class="col">
+                        <label class="form-label">Want to Change Password?</label>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#passwordModal">Change Password</button>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label class="form-label">Contact Number</label>
+                        <input type="number" class="form-control" formControlName="phone">
+                        <small class=" text-danger" *ngIf="userForm.controls['phone'].dirty && userForm.hasError('required','phone')">*Phone Number Is Required</small>
+                    </div>
+
+                    <div class="mb-3 col">
+                        <label class="form-label">Date Of Birth</label>
+                        <input type="date" class="form-control" formControlName="dateOfBirth" [value]="userForm.get('dateOfBirth')?.value | date:'yyyy-MM-dd'">
+                        <small class=" text-danger" *ngIf="userForm.controls['dateOfBirth'].dirty && userForm.hasError('required','dateOfBirth')">*Date Of Birth Is Required</small>
+                    </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">Current Address</label>
+                    <input type="text" class="form-control" formControlName="address">
+                    <small class=" text-danger" *ngIf="userForm.controls['address'].dirty && userForm.hasError('required','address')">*Address Is Required</small>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" [disabled]="userForm.invalid" class="btn btn-success">Update Profile</button>
+                </div> 
+            </form>
+        </div>
+        
+    </div>
+
+</div>
+
+<!--Change Password Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label class="form-label">Enter Old Password</label>
+                <input type="password" class="form-control" [(ngModel)]="oldPass" >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">New Password</label>
+                <input type="password" class="form-control" [(ngModel)]="newPass">
+                <div id="emailHelp" class="form-text">Your password must contain a capital letter, a number, and a special character.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Re-Enter New Password</label>
+                <input type="password" class="form-control" [(ngModel)]="rePass">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="passwordUpdate()">Update Password</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,204 @@
+<!-- <div class="container ">
+    <div class="row" style="min-height: 90vh;">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="p-5 col-md-5 border border-dark">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <h1>Edit Product Page</h1>
+                <div class="form-group my-3 d-none">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>person</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="brand" placeholder="Enter Product Name">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>person</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="productName" placeholder="Enter Product Name">
+                    </div> 
+                </div>
+                
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="brand" placeholder="Enter Brand Name">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>local_phone</mat-icon></span>
+                        <input type="number" class="form-control" formControlName="price" placeholder="Enter Price">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>local_phone</mat-icon></span>
+                        <input type="number" class="form-control" formControlName="discount" placeholder="Enter Discount">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>local_phone</mat-icon></span>
+                        <input type="number" class="form-control" formControlName="quantity" placeholder="Enter Quantity">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="type" placeholder="Enter type">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="status" placeholder="Enter status">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img1')">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img2')">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img3')">
+                    </div> 
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="discription" placeholder="Enter Discription">
+                    </div> 
+                </div>
+                
+                <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary">Submit</button>
+        
+            </form>
+        </div>
+    </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="px-5 py-4 col-md-9 mt-4" id="divCard">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <h1>Edit Product Page</h1>
+                <div class="row">
+                    <div class="form-group my-3 col d-none">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>badge</mat-icon></span>
+                            <input type="text" class="form-control" formControlName="productName" placeholder="Enter Product Name">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['productName'].dirty && productForm.hasError('required','productName')">*Product Name Is Required</small>
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>badge</mat-icon></span>
+                            <input type="text" class="form-control" formControlName="productName" placeholder="Enter Product Name">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['productName'].dirty && productForm.hasError('required','productName')">*Product Name Is Required</small>
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>badge</mat-icon></span>
+                            <input type="text" class="form-control" formControlName="brand" placeholder="Enter Product Brand">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['brand'].dirty && productForm.hasError('required','brand')">*Brand Name Is Required</small>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>currency_rupee</mat-icon></span>
+                            <input type="number" class="form-control" formControlName="price" placeholder="Enter Price">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['price'].dirty && productForm.hasError('required','price')">*Price Is Required</small>
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>percent</mat-icon></span>
+                            <input type="number" class="form-control" formControlName="discount" placeholder="Enter Discount">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['discount'].dirty && productForm.hasError('required','discount')">*Discount Is Required</small>
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>production_quantity_limits</mat-icon></span>
+                            <input type="number" class="form-control" formControlName="quantity" placeholder="Enter Quantity">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['quantity'].dirty && productForm.hasError('required','quantity')">*Quantity Is Required</small>
+                    </div>
+                </div>
+                
+                <div class="row">
+                   
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>format_list_bulleted</mat-icon></span>
+                            <input type="text" class="form-control" formControlName="type" placeholder="Enter Product Type">
+                        </div> 
+                        <small class=" text-danger" *ngIf="productForm.controls['type'].dirty && productForm.hasError('required','type')">*Type Is Required</small>
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text">Select Status</label>
+                            </div>
+                            <select class="form-control" formControlName="status">
+                              <option value="ACTIVE">ACTIVE</option>
+                              <option value="INACTIVE">INACTIVE</option>
+                            </select>
+                          </div>
+                        <small class=" text-danger" *ngIf="productForm.controls['status'].dirty && productForm.hasError('required','status')">*Status Is Required</small>
+                    </div>
+                </div>
+                
+               
+                <div class="row">
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>image</mat-icon></span>
+                            <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img1')">
+                        </div> 
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>image</mat-icon></span>
+                            <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img2')">
+                        </div> 
+                    </div>
+                    <div class="form-group my-3 col">
+                        <div class="input-group">
+                            <span class="input-group-text"><mat-icon>image</mat-icon></span>
+                            <input type="file" class="form-control" placeholder="Upload Image" (change)="onFileChange($event,'img3')">
+                        </div> 
+                    </div>
+                </div>
+                
+                
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>info</mat-icon></span>
+                        
+                        <textarea class="form-control" formControlName="discription" placeholder="Enter Product Discription"></textarea>
+                    </div> 
+                    <small class=" text-danger" *ngIf="productForm.controls['type'].dirty && productForm.hasError('required','discription')">*discription Is Required</small>
+                </div>
+                
+                <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary">Submit</button>
+        
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center" >
+        <div *ngIf="finalPrice>0" class="d-flex justify-content-center ">
+            <div class="col-7 m-4">
+                <div *ngIf="carts!=null">
+                    <h3>Products In The Cart</h3>
+                    <div *ngFor="let cart of carts">
+                        <div class="d-flex align-items-center border border-dark py-2 px-3 mt-4">
+                            <div class="ps-2">
+                               <img width="150" height="200" [src]="'data:image/jpeg;base64,'+cart.img1" />
+                            </div>
+                            <div class="py-3 ps-5 pe-1">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h4>{{cart.brand}}'s, {{cart.productName}}</h4>
+                                    <button class="btn btn-danger d-flex align-items-center" (click)="storeId(cart.id)" data-bs-toggle="modal" data-bs-target="#deleteModal"><mat-icon class="align-middle text-center">delete</mat-icon>Remove</button>
+                                </div>
+                                
+                                <hr/>
+                                {{cart.discription}}
+                                <h6 class="mt-2 text-danger">Flat {{cart.discount}}% off. Limited time deal.</h6>
+                                <hr/>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6>Quantity: {{cart.quantity}}</h6>
+                                    <h6>Price: Rs.{{cart.totalPrice}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="carts==null">
+                    Nothing In the Cart Shop Now!!
+                </div>
+                
+            </div>
+            
+            <div class="col-4 mt-5">
+                <div class="border border-dark p-4 mt-4 ">
+                    <h2 class="text-center">Check Out</h2>
+                    <hr/>
+                    <h5><i>Hi, {{user.fullName}}. Please confirm your contact details.</i></h5>
+                    <div class="mt-3">
+                        <i>
+                            <h6>Delivery Address: {{user.address}}</h6>
+                            <h6>Primary Contact Number: {{user.phone}}</h6>
+                            <h6>Sub Total: Rs. {{finalPrice}}</h6>
+                        </i>
+                    </div>
+                    <hr/>
+                    <button class="btn btn-success col-12" (click)="placeOrder()">Place Order</button>
+                </div>
+            </div>
+        </div>
+       
+        <div *ngIf="finalPrice==0" class="mt-5">
+            <h1><i>Your Cart Is Empty!!</i></h1>
+           
+        </div>
+    </div>
+    
+</div>
+
+<!-- Delete Model -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <h6><i>Are You Sure You Want To Remove The Item From The Cart?</i></h6>
+        </div>
+        <div class="modal-footer d-flex align-items-center justify-content-center">
+          <button type="button" class="btn btn btn-danger" (click)="removeItem()" data-bs-dismiss="modal">Remove</button>
+          <button type="button" class="btn btn btn-success" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

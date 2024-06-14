@@ -1,0 +1,60 @@
+<div class="container ">
+    <div class="row mt-4">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="px-5 py-4 col-md-5" id="divCard">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <h1>SignUp Page</h1>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>person</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="fullName" placeholder="Enter Full Name">
+                    </div> 
+                    <small class=" text-danger" *ngIf="signupForm.controls['fullName'].dirty && signupForm.hasError('required','fullName')">*Full Name Is Required</small>
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Enter Email Address">
+                    </div> 
+                    <small class=" text-danger" *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')">*Email Is Required</small>
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>local_phone</mat-icon></span>
+                        <input type="number" class="form-control" formControlName="phone" placeholder="Enter Phone Number">
+                    </div> 
+                    <small class=" text-danger" *ngIf="signupForm.controls['phone'].dirty && signupForm.hasError('required','phone')">*Contact Number Is Required</small>
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>cake</mat-icon></span>
+                        <input type="date" class="form-control" formControlName="dateOfBirth" placeholder="Enter Date Of Birth">
+                    </div> 
+                    <small class=" text-danger" *ngIf="signupForm.controls['dateOfBirth'].dirty && signupForm.hasError('required','dateOfBirth')">*Date Of Birth Is Required</small>
+                </div>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>location_on</mat-icon></span>
+                        <input type="text" class="form-control" formControlName="address" placeholder="Enter Your Address">
+                    </div> 
+                    <small class=" text-danger" *ngIf="signupForm.controls['address'].dirty && signupForm.hasError('required','address')">*Address Is Required</small>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>lock</mat-icon></span>
+                        <input [type]="passType" class="form-control" formControlName="passKey" placeholder="Create New Password">
+                        <span class="input-group-text" (click)="showPass()" id="basic-addon1"><mat-icon>{{icon}}</mat-icon></span>
+                    </div>
+                    <small class=" text-danger" *ngIf="signupForm.controls['passKey'].dirty && signupForm.hasError('required','passKey')">*Password Is Required</small>
+                </div>
+                
+                <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">Sign Up</button>
+                <div class="pt-2">
+                    Already have an account?<a class="ps-2" routerLink="/login">Login Now</a>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

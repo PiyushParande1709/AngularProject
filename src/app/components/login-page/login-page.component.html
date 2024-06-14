@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mt-5 pt-5">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="p-5 col-md-5" id="divCard">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h1>Login Page</h1>
+                <div class="form-group my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>email</mat-icon></span>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Enter Email Address" pattern="[a-z0-9A-Z._]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+                    </div> 
+                    <small class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">*Email is required.</small>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><mat-icon>lock</mat-icon></span>
+                        <input [type]="passType" class="form-control" formControlName="passKey" placeholder="Enter your password">
+                        <span class="input-group-text" (click)="showPass()" id="basic-addon1"><mat-icon>{{icon}}</mat-icon></span>
+                    </div>
+                    <small class="text-danger" *ngIf="loginForm.controls['passKey'].dirty && loginForm.hasError('required','passKey')">*Password is required.</small>
+                </div>
+                
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+                <div class="pt-2">
+                    Don't have an account?<a class="ps-2" routerLink="/signup">Sign Up Now!</a>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

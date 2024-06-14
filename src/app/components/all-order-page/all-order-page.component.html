@@ -1,0 +1,64 @@
+<div class="container p-5">
+    <div id="divCard" class="p-5">
+        <div class="d-flex justify-content-between" > 
+          <h1>All Orders</h1>
+        </div>
+      
+        <div class="d-flex  my-3 align-items-center justify-content-center ">
+            <span class="btn btn-dark shadow-lg" for="searchbar"><mat-icon class="text-center align-middle">manage_search</mat-icon></span>
+            <input class="form-control ms-2 border-dark shadow-lg" id="searchbar" aria-describedby="search-icon" type="text" placeholder="Search Bar..." aria-label="Search" [(ngModel)]="searchText">
+        </div>
+        <div class="shadow shadow-lg rounded mt-4">
+          <table class="rounded-xl table table-hover table-bordered border-dark rounded" *ngIf="orders && orders.length > 0">
+            <thead class="bg-dark text-light border-light">
+              <tr class="text-center align-middle"> 
+                <th scope="col">Order ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Order Placed On</th>
+                <th scope="col">Customer Address</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders | orderFilter: searchText" class="text-center align-middle">
+                    <td >{{order.orderNumber}}</td>
+                    <td >{{order.productName}}</td>
+                    <td >{{order.totalPrice}}</td>
+                    <td >{{order.fullName}}</td>
+                    <td >{{order.orderDate | date: 'dd-MM-YYYY' }}</td>
+                    <td >{{order.address}}</td>
+                    <td ><div>
+                      <button class="btn btn-outline-success col-12 " (click)="statusUpdate(order.productId,order.id,order.status)" data-bs-toggle="modal" data-bs-target="#statusModal">{{order.status}}</button>
+                    </div></td>            
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <p *ngIf="!orders || orders.length === 0">No Orders Found!!</p>
+      </div>
+</div>
+
+<div class="modal fade" id="statusModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Product Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <select [(ngModel)]="status" class="form-select">
+                <option value="RECIVED">Order Recived</option>
+                <option value="PACKED">Order Packed</option>
+                <option value="SHIPPED">Order Shipped</option>
+                <option value="DELIVERED">Order Delivered</option>
+              </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="update()">Update Status</button>
+        </div>
+      </div>
+    </div>
+</div>

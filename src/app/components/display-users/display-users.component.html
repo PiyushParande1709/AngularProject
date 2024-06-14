@@ -1,0 +1,67 @@
+<div class="container p-5 mt-5">
+    <div id="loanCard" class="p-5">
+        <div class="d-flex justify-content-between" > 
+          <h1>All Users</h1>
+          <!--Delete Loan Plan Modal -->
+          <!-- <div class="modal fade" id="DeleteLoanPlan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                  <img class="mb-3 w-23 img-fluid h-auto" src="assets/icons8-warning.gif">
+                  <h4 class="mx-5">Are you sure you want to delete this loan plan?</h4> 
+                  <p><b>Note:</b><i> This will also delete its previously updated history.</i></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="deleteLoanPlan(selectedId)">Delete</button>
+                  <button type="button" class="btn btn-success"  data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      
+        <!-- Serach Bar -->
+        <!-- <div class="d-flex my-3 align-items-center justify-content-center ">
+          <span class="btn btn-dark shadow" for="searchbar"><mat-icon class="text-center align-middle">manage_search</mat-icon></span>
+          <input class="form-control ms-2 border-dark shadow" id="searchbar" aria-describedby="search-icon" type="text" placeholder="Search Bar..." aria-label="Search" [(ngModel)]="searchText">
+          
+        </div> -->
+    
+        <!-- Delete Alert -->
+        <!-- <div *ngIf="alert" class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+          <div><mat-icon class="text-center align-middle me-2">delete</mat-icon> Loan Plan Deleted Successfully!</div>  
+          <button type="button" class="btn-close" (click)="closeAlert()" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+        
+        <!--Table-->
+        <div class="shadow shadow-lg rounded mt-4">
+          <table class="rounded-xl table table-hover table-bordered border-dark rounded" *ngIf="user && user.length > 0">
+            <thead class="bg-dark text-light border-light">
+              <tr class="text-center align-middle"> 
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let users of user" class="text-center align-middle">
+                    <td >{{users.fullName}}</td>
+                    <td >{{users.email}}</td>
+                    <td >{{users.phone}}</td>
+                    <td >{{users.dateOfBirth | date: 'dd-MM-YYYY' }}</td>
+                    <td >{{users.address}}</td>
+                    <td ><div>
+                      <a class="btn btn-outline-dark m-2"> View Orders</a>|
+                      <a class="btn btn-outline-danger m-2" >Deactivate User</a>
+                    </div></td>            
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <p *ngIf="!user || user.length === 0">No Users Found!!</p>
+      </div>
+</div>
