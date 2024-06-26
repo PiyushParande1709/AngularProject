@@ -19,7 +19,7 @@ export class CartPageComponent {
   productId!:number;
   userId:string='';
   user:userGet={
-    Id:0,
+    id:0,
     fullName:"",
     email:'',
     passKey:'',

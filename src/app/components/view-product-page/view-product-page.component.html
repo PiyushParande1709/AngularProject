@@ -33,7 +33,7 @@
             <hr>
             <h3>{{product.productName}}</h3>
             <h6 class="text-success">{{product.discount}}% Discount Available On This Product</h6>
-            <h4>Rs. {{product.price}}/- Only</h4>
+            <div class="d-flex"><h4>&#8377; </h4><h4 class="text-decoration-line-through">{{product.price}}</h4><h4 class="ms-1">{{calculatePrice(product.price,product.discount)}}/- Only</h4></div>
             <h6 class="text-danger">Hurry Up Only {{product.quantity}} are left</h6>
             <hr>
             <div class="d-flex col-12 align-items-center justify-content-center">

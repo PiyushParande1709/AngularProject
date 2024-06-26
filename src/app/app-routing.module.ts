@@ -14,6 +14,7 @@ import { roleGuard } from './guard/role.guard';
 import { MyOrdersPageComponent } from './components/my-orders-page/my-orders-page.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AllOrderPageComponent } from './components/all-order-page/all-order-page.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {path:'',component: HomePageComponent},
@@ -27,7 +28,9 @@ const routes: Routes = [
   {path:'cart/:id',component:CartPageComponent,canActivate:[authGuard]},
   {path:'orders',component:MyOrdersPageComponent,canActivate:[authGuard]},
   {path:'editUser',component:EditUserComponent,canActivate:[authGuard]},
+  {path:'dashboard',component:AdminDashboardComponent,canActivate:[authGuard]},
   {path:'allOrder',component: AllOrderPageComponent,canActivate:[roleGuard]},
+
 ];
 
 @NgModule({

@@ -10,7 +10,7 @@
               
                 <div class="d-flex">
                   
-                    <div class="">
+                    <div class="p-2">
                       <a [routerLink]="['product/',data.id]" style="text-decoration: none;" class="text-dark">
                       <img width="220" [src]="data.img1" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px; height: 100%; object-fit: cover;" />
                       </a>
@@ -18,17 +18,24 @@
                   
                   <div class="p-4">
                     <a [routerLink]="['product/',data.id]" style="text-decoration: none;" class="text-dark">
-                      <div class="d-flex align-items-center justify-content-between">
-                          <h4>{{data.brand}}'s, {{data.productName}}</h4>
+                      <div class="">
+                          <h6>{{data.brand}}'s, {{data.productName}}</h6>
+                          <div>
+                            <mat-icon class="fs-6 align-middle text-warning">star</mat-icon>
+                            <mat-icon class="fs-6 align-middle text-warning">star</mat-icon>
+                            <mat-icon class="fs-6 align-middle text-warning">star</mat-icon>
+                            <mat-icon class="fs-6 align-middle text-warning">star</mat-icon>
+                            <mat-icon class="fs-6 align-middle text-warning">star_half</mat-icon>
+                          </div>
                       </div>
                       
-                      <hr/>
-                      {{limitText(data.discription,15)}}
-                      <h6 class="mt-2 text-danger">Flat {{data.discount}}% off. Limited time deal.</h6>
-                      <hr/>
-                      <div class="d-flex align-items-center justify-content-between">
+                      <hr style="margin: 0px;" />
+                      <p class="mt-2">{{limitText(data.discription,15)}}</p>
+                      <h6 class="text-danger mt-0">Flat {{data.discount}}% off. Limited time deal.</h6>
+                      <hr style="margin: 0px;" />
+                      <div class="d-flex align-items-center justify-content-between mt-3">
                           <h6>Quantity: {{data.quantity}}</h6>
-                          <h6>Price: Rs.{{data.price}}</h6>
+                          <div class="d-flex align-items-center justify-content-center"><h6>Price: </h6><h6 class="text-decoration-line-through ms-1"> &#8377;{{data.price}}</h6><h6 class="ms-1"> &#8377;{{calculatePrice(data.price,data.discount)}}/-</h6></div>  
                       </div>
                     </a>
                     <div *ngIf="role=='ADMIN'">
@@ -36,8 +43,9 @@
                       <div class=" d-flex justify-content-between align-items-center col-12">
                         <button class="btn btn-danger " *ngIf="data.status=='INACTIVE'" type="button">INACTIVE</button>
                         <button class="btn btn-success" *ngIf="data.status=='ACTIVE'" type="button">ACTIVE</button>
-                        <button class="btn btn-info"  type="button" [routerLink]="['productEdit/',data.id]"><mat-icon class="align-middle text-center me-2">edit</mat-icon>Edit</button>
-                        <button class="btn btn-danger " type="button" (click)="deleteProduct(data.id)"><mat-icon class="align-middle text-center me-2">delete</mat-icon>Delete</button>
+                        <div></div>
+                        <button class="btn btn-outline-dark"  type="button" [routerLink]="['productEdit/',data.id]"><mat-icon class="align-middle text-center me-2">edit</mat-icon>Edit</button>
+                        <button class="btn btn-outline-danger " type="button" (click)="deleteProduct(data.id)"><mat-icon class="align-middle text-center me-2">delete</mat-icon>Delete</button>
                       </div>
                     </div> 
                   </div>

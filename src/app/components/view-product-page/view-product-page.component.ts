@@ -30,7 +30,7 @@ export class ViewProductPageComponent {
   };
 
   user:userGet={
-    Id:0,
+    id:0,
     fullName:'',
     email:'',
     passKey:'',
@@ -49,6 +49,7 @@ export class ViewProductPageComponent {
 
   viewCart:cartGet[]=[];
   token:any;
+  finalprice:number=0;
   productQuantity:number=1;
   metaData:string='data:image/jpeg;base64,';
   constructor(private service:StoreService,private route:ActivatedRoute,private router:Router,private toast:ToastrService){}
@@ -105,5 +106,10 @@ export class ViewProductPageComponent {
         this.router.navigate(['cart',this.cartData.userId]);
       }
     })
+  }
+
+  calculatePrice(price:number,discount:number):string{
+    this.finalprice=price-(price*(discount/100));
+    return this.finalprice.toString();
   }
 }

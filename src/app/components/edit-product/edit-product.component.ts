@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { stockGet } from 'src/app/models/stockGet.model';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -28,7 +29,7 @@ export class EditProductComponent implements OnInit{
     discription:''
   };
 
-  constructor(private service:StoreService,private fb:FormBuilder,private route:ActivatedRoute,private nav:Router){}
+  constructor(private service:StoreService,private fb:FormBuilder,private route:ActivatedRoute,private nav:Router,private toast:ToastrService){}
   
   
   ngOnInit(){
@@ -85,6 +86,7 @@ export class EditProductComponent implements OnInit{
       next:(data)=>{
         console.log(data);
         this.nav.navigate(['allProducts']);
+        this.toast.info("Product Updated Successfully!!");
       }
     })
   }

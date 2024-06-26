@@ -1,5 +1,5 @@
 export interface userGet{
-    Id:number;
+    id:number;
     fullName:string;
     email:string;
     passKey:string;

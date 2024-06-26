@@ -36,7 +36,7 @@ export class LoginPageComponent {
           var token=this.service.decodedToken();
           this.service.triggerLogin(token.role);//this will set the role in localStorage
           if(token.role=='ADMIN'){
-            this.router.navigate(['users']);
+            this.router.navigate(['allProducts']);
             this.toast.success("Admin Login successfull!!",'Success');
           }
           else this.router.navigate(['allProducts']);

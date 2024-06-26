@@ -54,12 +54,16 @@ export class StoreService {
     return this.http.get<any>('https://localhost:7292/StoreManagement/api/userById/'+id);
   }
 
-  allProducts():Observable<any>{
-    return this.http.get<any>('https://localhost:7292/StoreManagement/api/stocks');
+  deleteUser(id:string):Observable<any>{
+    return this.http.delete<any>('https://localhost:7292/StoreManagement/api/delete/'+id)
   }
 
   allUsers(): Observable<userGet[]>{
     return this.http.get<userGet[]>('https://localhost:7292/StoreManagement/api/users');
+  }
+
+  allProducts():Observable<any>{
+    return this.http.get<any>('https://localhost:7292/StoreManagement/api/stocks');
   }
 
   addProduct(data:any):Observable<any>{

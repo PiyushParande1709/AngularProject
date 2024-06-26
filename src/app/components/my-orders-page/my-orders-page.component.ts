@@ -31,11 +31,8 @@ export class MyOrdersPageComponent {
                 order.discription=data.discription;
                 order.img1=data.img1;
               }
-            }) 
-               
+            })  
         });
-
-        
       }
     })
     

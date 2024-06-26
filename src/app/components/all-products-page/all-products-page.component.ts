@@ -19,6 +19,7 @@ export class AllProductsPageComponent {
   Casuals:boolean=false;
   minPrice:number=50;
   maxPrice:number=50000;
+  finalprice:number=0;
 
   constructor(private service:StoreService,private toast:ToastrService){}
 
@@ -88,5 +89,10 @@ export class AllProductsPageComponent {
 
   ngOnInit(){
     this.getProduct();
+  }
+
+  calculatePrice(price:number,discount:number):string{
+    this.finalprice=price-(price*(discount/100));
+    return this.finalprice.toString();
   }
 }

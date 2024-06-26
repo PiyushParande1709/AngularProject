@@ -23,6 +23,7 @@ import { ProductFilterPipe } from './pipe/product-filter.pipe';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AllOrderPageComponent } from './components/all-order-page/all-order-page.component';
 import { OrderFilterPipe } from './pipe/order-filter.pipe';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 
@@ -43,7 +44,8 @@ import { OrderFilterPipe } from './pipe/order-filter.pipe';
     ProductFilterPipe,
     EditUserComponent,
     AllOrderPageComponent,
-    OrderFilterPipe
+    OrderFilterPipe,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

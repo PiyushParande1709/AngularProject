@@ -1,0 +1,90 @@
+<div  id="body" class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="d-flex">
+        <!-- SideBar -->
+        <div class="col-2 bg-dark d-flex flex-column justify-content-between" style="min-height: 89.5vh;z-index: 100;">
+            <ul class="nav mt-4  col-12">
+                  <li class="nav-item ms-1 mb-3 col-11" >
+                    <a class="nav-link " (click)="orderChart()"><mat-icon class="text-center align-middle">list_alt</mat-icon> Order Stats</a>
+                  </li>
+                  <li class="nav-item ms-1 mb-3 col-11">
+                    <a class="nav-link" (click)="categoryChart()"><mat-icon class="text-center align-middle">list_alt</mat-icon> Category Stats</a>
+                  </li>
+                  <li class="nav-item ms-1 mb-3 col-11">
+                    <a class="nav-link" (click)="categoryRevenueChart()"><mat-icon class="text-center align-middle">currency_rupee</mat-icon> Category Revenue</a>
+                  </li>
+                  <li class="nav-item ms-1 mb-3 col-11">
+                    <a class="nav-link" (click)="yearlyRevenueChart()"><mat-icon class="text-center align-middle">currency_rupee</mat-icon> Total Revenue</a>
+                  </li>
+            </ul>
+            <div class="mb-4 ms-4">
+              <button type="button" class="btn btn-light px-5 py-2 rounded">Need Help?</button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div id="divCard" class="mx-5 my-4 py-5" *ngIf="orderGraph">
+            <div class="d-flex align-items-center justify-content-between mx-5">
+                <h3>Monthly Orders Placed</h3>
+                <div class="d-flex">
+                    <input class="form-control mx-3" type="text" [(ngModel)]="year">
+                    <button class="btn btn-outline-dark" (click)="show()" >Show</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="order" height="380" width="1100"></canvas>
+            </div>
+        </div>
+        <div id="divCard" class="mx-5 my-4 py-5" *ngIf="categoryGraph">
+            <div class="d-flex align-items-center justify-content-between mx-5">
+                <h3>Category Wise Orders Placed</h3>
+                <div class="d-flex">
+                    <input class="form-control mx-3" type="text" [(ngModel)]="year">
+                    <button class="btn btn-outline-dark" (click)="show()" >Show</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="category" height="380" width="1100"></canvas>
+            </div>
+        </div>
+        <div id="divCard" class="mx-5 my-4 pt-5" *ngIf="categoryRevenueGraph">
+            <div class="d-flex align-items-center justify-content-between mx-5 mb-4">
+                <h3>Category Wise Revenue</h3>
+                <div class="d-flex">
+                    <input class="form-control mx-3" type="text" [(ngModel)]="year">
+                    <button class="btn btn-outline-dark" (click)="show()" >Show</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="categoryRevenue" height="380" width="1100"></canvas>
+            </div>
+        </div>
+        <div id="divCard" class="mx-5 my-4 pt-5" *ngIf="revenueGraph">
+            <div class="d-flex align-items-center justify-content-between mx-5 mb-4">
+                <h3>Monthly Revenue</h3>
+                <div class="d-flex">
+                    <input class="form-control mx-3" type="text" [(ngModel)]="year">
+                    <button class="btn btn-outline-dark" (click)="show()" >Show</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="revenue" height="380" width="1100"></canvas>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+   
